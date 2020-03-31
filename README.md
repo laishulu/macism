@@ -21,6 +21,12 @@ shortcut key in a simulated way.
 
 You can get the executable in any of the following ways:
 
+- Install from brew
+    ```
+    brew tap laishulu/macism
+    brew install macism
+    ```
+
 - compile by yourself
     ```
     git clone https://github.com/laishulu/macism
@@ -28,7 +34,7 @@ You can get the executable in any of the following ways:
     swiftc macism.swift
     ```
 - download the executable directly from 
-    [github](https://github.com/laishulu/emacs-tmux-pane/releases)
+    [github](https://github.com/laishulu/macism/releases)
     
 ### Usage
 
