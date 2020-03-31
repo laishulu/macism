@@ -1,10 +1,11 @@
 ## MacOS Input Source Manager
 
 This tool is used to manage MacOS input source from command line, useful to be 
-integrated with `vim` and `emacs`. It is based on the codes from 
-[kawa](https://github.com/utatti/kawa).
+integrated with `vim` and `emacs` (e.g.
+[evil-smart-input-source](https://github.com/laishulu/evil-smart-input-source)).
+It is based on the codes from [kawa](https://github.com/utatti/kawa).
 
-It's main advantage over other similar tools is that it can reliably select CJKV(
+`macism`'s main advantage over other similar tools is that it can reliably select CJKV(
 Chinese/Japanese/Korean/Vietnamese) input source, while with other tools (such as
 [input-source-switcher](https://github.com/vovkasm/input-source-switcher),
 [im-select from smartim](https://github.com/ybian/smartim),
@@ -13,9 +14,9 @@ you will see that the input source icon has already changed in the menu bar, but
 unless you activate other applications and then switch back, you input source is
 actually still the same as before.
 
-This tool overcomes the traditional shortcoming by reading the shortcut key for
-switching input sources from the system preference, and then trigger the
-shortcut key in a simulated way.
+`macism` solve other tools' problem by reading the shortcut key for switching
+input sources from the system preference, and then emulate the triggering of the
+shortcut key.
 
 ### Install
 
