@@ -2,7 +2,7 @@
 
 This tool is used to manage MacOS input source from command line, useful to be 
 integrated with `vim` and `emacs` (e.g.
-[evil-smart-input-source](https://github.com/laishulu/evil-smart-input-source)).
+[emacs-smart-input-source](https://github.com/laishulu/emacs-smart-input-source)).
 It is based on the codes from [kawa](https://github.com/utatti/kawa).
 
 `macism`'s main advantage over other similar tools is that it can reliably select CJKV(
