@@ -1,7 +1,7 @@
 ## MacOS Input Source Manager
 
-This tool is used to manage MacOS input source from command line, useful to be 
-integrated with `vim` and `emacs` (e.g.
+This tool manages MacOS input source from command line, can be integrated with 
+`vim` and `emacs` (e.g.
 [emacs-smart-input-source](https://github.com/laishulu/emacs-smart-input-source)).
 It is based on the codes from [kawa](https://github.com/utatti/kawa).
 
