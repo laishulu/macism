@@ -58,5 +58,5 @@ see also https://support.apple.com/en-gb/guide/mac-help/mh43185/mac
 
 When `macism` simulates the triggering of the shortcut key, it need a tiny 
 period time to take effect. The delay is totally acceptable for users, but you 
-can't retrive the new input resource immediately in a programmatically way 
-without a delay.
+can't retrive the new input resource immediately in a programmatical way without
+a delay.
