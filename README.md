@@ -52,7 +52,7 @@ following the instructions below:
 
 - Apple menu  > System Preferences
 - click Privacy, click Accessibility
-- then select your terminal app’s tickbox
+- select your app's tickbox
 
 see also https://support.apple.com/en-gb/guide/mac-help/mh43185/mac
   
