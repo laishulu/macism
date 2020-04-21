@@ -84,16 +84,16 @@ class InputSourceManager {
 
         let down = CGEvent(keyboardEventSource: src,
                            virtualKey: key, keyDown: true)!
-        let up = CGEvent(keyboardEventSource: src,
-                         virtualKey: key, keyDown: false)!
-
         down.flags = flag;
-        // if with flag, a pop up will show up
-        // up.flags = flag;
-
         down.post(tap: .cghidEventTap)
+
         // without the sleep, chance to fail is big with the compiled binary
         usleep(50000)
+
+        let up = CGEvent(keyboardEventSource: src,
+                         virtualKey: key, keyDown: false)!
+        // if with flag, a pop up will show up
+        // up.flags = flag;
         up.post(tap: .cghidEventTap)
     }
 
