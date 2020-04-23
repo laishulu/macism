@@ -87,14 +87,12 @@ class InputSourceManager {
         down.flags = flag;
         down.post(tap: .cghidEventTap)
 
-        // without the sleep, chance to fail is big with the compiled binary
-        usleep(50000)
-
         let up = CGEvent(keyboardEventSource: src,
                          virtualKey: key, keyDown: false)!
         // if with flag, a pop up will show up
         // up.flags = flag;
         up.post(tap: .cghidEventTap)
+        usleep(60000)
     }
 
     // from read-symbolichotkeys script of Karabiner
