@@ -171,8 +171,13 @@ InputSourceManager.initialize()
 if CommandLine.arguments.count == 1 {
     let currentSource = InputSourceManager.getCurrentSource()
     print(currentSource.id)
-}else{
-    let dstSource = InputSourceManager
-    .getInputSource(name: CommandLine.arguments[1])
-    dstSource.select()
+} else {
+    let checkOptPrompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString
+    let options = [checkOptPrompt: true]
+    let isAppTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary?);
+    if(isAppTrusted == true) {
+        let dstSource = InputSourceManager
+        .getInputSource(name: CommandLine.arguments[1])
+        dstSource.select()
+    }
 }
