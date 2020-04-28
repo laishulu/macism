@@ -45,7 +45,7 @@ You can get the executable in any of the following ways:
 
 **Important**:
 
-The first time when you use `macism` in your app (e.g. 
+The first time when you use `macism SOME_INPUT_SOURCE_ID` in your app (e.g. 
 Terminal.app/Emacs.app/iTerm2.app/Alacritty.app), MacOS will popup a window
 asking you to grant permission of Accessibility, you can also grant the 
 permission manually following the below instructions:
