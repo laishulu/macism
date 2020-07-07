@@ -92,7 +92,7 @@ class InputSourceManager {
         // if with flag, a pop up will show up
         // up.flags = flag;
         up.post(tap: .cghidEventTap)
-        usleep(60000)
+        usleep(1000)
     }
 
     // from read-symbolichotkeys script of Karabiner
