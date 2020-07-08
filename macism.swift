@@ -46,7 +46,7 @@ class InputSource: Equatable {
 
 class InputSourceManager {
     static var inputSources: [InputSource] = []
-    static var uSeconds: UInt32 = 60000
+    static var uSeconds: UInt32 = 5000
 
     static func initialize() {
         let inputSourceNSArray = TISCreateInputSourceList(nil, false)
