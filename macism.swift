@@ -46,6 +46,7 @@ class InputSource: Equatable {
 
 class InputSourceManager {
     static var inputSources: [InputSource] = []
+    static var uSeconds: UInt32 = 60000
 
     static func initialize() {
         let inputSourceNSArray = TISCreateInputSourceList(nil, false)
@@ -92,7 +93,7 @@ class InputSourceManager {
         // if with flag, a pop up will show up
         // up.flags = flag;
         up.post(tap: .cghidEventTap)
-        usleep(1000)
+        usleep(InputSourceManager.uSeconds)
     }
 
     // from read-symbolichotkeys script of Karabiner
@@ -172,6 +173,9 @@ if CommandLine.arguments.count == 1 {
     let currentSource = InputSourceManager.getCurrentSource()
     print(currentSource.id)
 } else {
+    if CommandLine.arguments.count == 3 {
+       InputSourceManager.uSeconds = UInt32(CommandLine.arguments[2])!
+    }
     let checkOptPrompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString
     let options = [checkOptPrompt: true]
     let isAppTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary?);
