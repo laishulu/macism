@@ -185,5 +185,7 @@ if CommandLine.arguments.count == 1 {
             InputSourceManager.uSeconds = UInt32(CommandLine.arguments[2])!
         }
         dstSource.select()
+    } else {
+        usleep(5000000)
     }
 }
