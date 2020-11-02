@@ -43,8 +43,8 @@ You can get the executable in any of the following ways:
 - `macism` will output the current input source
 - `macism SOME_INPUT_SOURCE_ID` will select to `SOME_INPUT_SOURCE_ID`.
 - `macism SOME_INPUT_SOURCE_ID uSECONDS` will select to `SOME_INPUT_SOURCE_ID`. 
-  If switch from none-CJKV to CJKV, will sleep uSECONDS (default to 5000) micro
-  seconds. 
+  If switch from none-CJKV to CJKV, will sleep uSECONDS (default to 20000)
+  micro seconds.
 
 **Important**:
 
