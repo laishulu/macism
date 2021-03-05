@@ -69,9 +69,9 @@ The shortcut can be anything as your wish, `macism` will read the shortcut from
 that entry and trigger it by emulation when needed. Just to make sure you have
 already enabled the shortcut.
 
-### About a Suitable Delay
+### About a Delay
 
-When `macism` simulates the triggering of the shortcut key, it need a tiny 
+When `macism` emulates the triggering of the shortcut key, it need a tiny 
 period time to take effect. The delay is totally acceptable for users, but you 
 can't retrive the new input resource immediately in a programmatical way without
 a delay.
