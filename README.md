@@ -46,9 +46,9 @@ You can get the executable in any of the following ways:
   If switch from none-CJKV to CJKV, will sleep uSECONDS (default to 20000)
   micro seconds.
 
-## Must Ensured Note
+## Must Read Note
 
-### About permission.
+### About Permission.
 The first time when you use `macism SOME_INPUT_SOURCE_ID` in your app (e.g. 
 Terminal.app/Emacs.app/iTerm2.app/Alacritty.app), MacOS will popup a window
 asking you to grant permission of Accessibility, you can also grant the 
