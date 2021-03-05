@@ -1,4 +1,4 @@
-## MacOS Input Source Manager
+# MacOS Input Source Manager
 
 This tool manages MacOS input source from command line, can be integrated with 
 `vim` and `emacs` (e.g.
@@ -19,7 +19,7 @@ actually still the same as before.
 input sources from the system preference, and then emulate the triggering of the
 shortcut key.
 
-### Install
+## Install
 
 You can get the executable in any of the following ways:
 
@@ -38,7 +38,7 @@ You can get the executable in any of the following ways:
 - download the executable directly from 
     [github](https://github.com/laishulu/macism/releases)
     
-### Usage
+## Usage
 
 - `macism` will output the current input source
 - `macism SOME_INPUT_SOURCE_ID` will select to `SOME_INPUT_SOURCE_ID`.
@@ -46,8 +46,9 @@ You can get the executable in any of the following ways:
   If switch from none-CJKV to CJKV, will sleep uSECONDS (default to 20000)
   micro seconds.
 
-**Important**:
+## Must Ensured Note
 
+### About permission.
 The first time when you use `macism SOME_INPUT_SOURCE_ID` in your app (e.g. 
 Terminal.app/Emacs.app/iTerm2.app/Alacritty.app), MacOS will popup a window
 asking you to grant permission of Accessibility, you can also grant the 
@@ -59,7 +60,16 @@ permission manually following the below instructions:
 
 see also https://support.apple.com/en-gb/guide/mac-help/mh43185/mac
   
-### Note
+### About Shortcut.
+
+You must enable the MacOS shortcut for "Select the previous input source", which
+can be found in "Preference->Keyboard->Shortcuts->Input Source".
+
+The shortcut can be anything as your wish, `macism` will read the shortcut from
+that entry and trigger it by emulation when needed. Just to make sure you have
+already enabled the shortcut.
+
+### About a Suitable Delay
 
 When `macism` simulates the triggering of the shortcut key, it need a tiny 
 period time to take effect. The delay is totally acceptable for users, but you 
