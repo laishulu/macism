@@ -59,6 +59,8 @@ permission manually following the below instructions:
 - select your app's tickbox
 
 see also https://support.apple.com/en-gb/guide/mac-help/mh43185/mac
+
+Be sure to **restart** your app, or the permission will not take effect.
   
 ### About Keyboard Shortcut
 
