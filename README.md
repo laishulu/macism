@@ -60,10 +60,11 @@ permission manually following the below instructions:
 
 see also https://support.apple.com/en-gb/guide/mac-help/mh43185/mac
   
-### About Shortcut.
+### About Keyboard Shortcut
 
-You must enable the MacOS shortcut for "Select the previous input source", which
-can be found in "Preference -> Keyboard -> Shortcuts -> Input Source".
+You must enable the MacOS keyboard shortcut for "Select the previous input
+source", which can be found in "Preference -> Keyboard -> Shortcuts -> Input
+Source".
 
 The shortcut can be anything as your wish, `macism` will read the shortcut from
 that entry and trigger it by emulation when needed. Just to make sure you have
