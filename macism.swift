@@ -71,17 +71,24 @@ class InputSourceManager {
         )
     }
 
-    static func getInputSource(name: String)->InputSource{
+    static func getInputSource(name: String)->InputSource?{
         let inputSources = InputSourceManager.inputSources
-        return inputSources.filter({$0.id == name}).first!
+        return inputSources.filter({$0.id == name}).first
     }
 
     static func selectPrevious(){
-        let shortcut = getSelectPreviousShortcut()!
+        let shortcut = getSelectPreviousShortcut()
+        if (shortcut == nil){
+            print("""
+                  Shortcut to select previous input source does not exit,
+                  please read README of macism
+                  """)
+            exit(1)
+        }
         let src = CGEventSource(stateID: .hidSystemState)
 
-        let key = CGKeyCode(shortcut.0)
-        let flag = CGEventFlags(rawValue: shortcut.1)
+        let key = CGKeyCode(shortcut!.0)
+        let flag = CGEventFlags(rawValue: shortcut!.1)
 
         let down = CGEvent(keyboardEventSource: src,
                            virtualKey: key, keyDown: true)!
@@ -181,10 +188,13 @@ if CommandLine.arguments.count == 1 {
         let dstSource = InputSourceManager.getInputSource(
             name: CommandLine.arguments[1]
         )
+        if (dstSource == nil){
+            print("Input source \(CommandLine.arguments[1]) does not exist!")
+        }
         if CommandLine.arguments.count == 3 {
             InputSourceManager.uSeconds = UInt32(CommandLine.arguments[2])!
         }
-        dstSource.select()
+        dstSource?.select()
     } else {
         usleep(5000000)
     }
