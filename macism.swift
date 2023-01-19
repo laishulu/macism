@@ -55,8 +55,7 @@ class InputSourceManager {
 
         inputSources = inputSourceList.filter(
             {
-                $0.category == TISInputSource.Category.keyboardInputSource
-                && $0.isSelectable
+                $0.isSelectable
             }).map { InputSource(tisInputSource: $0) }
     }
 
