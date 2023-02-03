@@ -47,11 +47,18 @@ class InputSource: Equatable {
 class InputSourceManager {
     static var inputSources: [InputSource] = []
     static var uSeconds: UInt32 = 20000
+    static var keyboardOnly: Bool = true
 
     static func initialize() {
         let inputSourceNSArray = TISCreateInputSourceList(nil, false)
-        .takeRetainedValue() as NSArray
-        let inputSourceList = inputSourceNSArray as! [TISInputSource]
+            .takeRetainedValue() as NSArray
+        var inputSourceList = inputSourceNSArray as! [TISInputSource]
+        if self.keyboardOnly {
+            inputSourceList = inputSourceList.filter(
+                {
+                    $0.category == TISInputSource.Category.keyboardInputSource
+                })
+        }
 
         inputSources = inputSourceList.filter(
             {
@@ -184,14 +191,23 @@ if CommandLine.arguments.count == 1 {
     let options = [checkOptPrompt: true]
     let isAppTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary?)
     if(isAppTrusted == true) {
+        let filteredArgs = CommandLine.arguments.filter(
+            {
+                $0.lowercased() != "--noKeyboardOnly".lowercased()
+            })
+
+        InputSourceManager.keyboardOnly =
+            CommandLine.arguments.count == filteredArgs.count
+
         let dstSource = InputSourceManager.getInputSource(
-            name: CommandLine.arguments[1]
+            name: filteredArgs[1]
         )
+
         if (dstSource == nil){
-            print("Input source \(CommandLine.arguments[1]) does not exist!")
+            print("Input source \(filteredArgs[1]) does not exist!")
         }
-        if CommandLine.arguments.count == 3 {
-            InputSourceManager.uSeconds = UInt32(CommandLine.arguments[2])!
+        if filteredArgs.count == 3 {
+            InputSourceManager.uSeconds = UInt32(filteredArgs[2])!
         }
         dstSource?.select()
     } else {

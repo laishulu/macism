@@ -40,11 +40,13 @@ You can get the executable in any of the following ways:
     
 ## Usage
 
-- `macism` will output the current input source
-- `macism SOME_INPUT_SOURCE_ID` will select to `SOME_INPUT_SOURCE_ID`.
-- `macism SOME_INPUT_SOURCE_ID uSECONDS` will select to `SOME_INPUT_SOURCE_ID`. 
+1. `macism` will output the current input source
+2. `macism SOME_INPUT_SOURCE_ID` will select to `SOME_INPUT_SOURCE_ID`.
+3. `macism SOME_INPUT_SOURCE_ID uSECONDS` will select to `SOME_INPUT_SOURCE_ID`. 
   If switch from none-CJKV to CJKV, will sleep uSECONDS (default to 20000)
   micro seconds.
+4. Add an `--noKeyboardOnly` option to commad pattern *#2* and *#3* will also 
+   enable none-keyboard input sources.
 
 ## Must Read Note
 
