@@ -45,8 +45,8 @@ You can get the executable in any of the following ways:
 3. `macism SOME_INPUT_SOURCE_ID uSECONDS` will select to `SOME_INPUT_SOURCE_ID`. 
   If switch from none-CJKV to CJKV, will sleep uSECONDS (default to 20000)
   micro seconds.
-4. Add an `--noKeyboardOnly` option to command pattern *#2* and *#3* will also 
-   enable none-keyboard input sources.
+4. Add an extra option `--noKeyboardOnly` to command pattern *#2* and *#3* will 
+  also enable none-keyboard input sources.
 
 ## Must Read Note
 
