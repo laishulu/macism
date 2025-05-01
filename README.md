@@ -37,7 +37,7 @@ You can get the executable in any of the following ways:
 1. `macism` will output the current input source
 2. `macism SOME_INPUT_SOURCE_ID` will select to `SOME_INPUT_SOURCE_ID`.
 3. `macism SOME_INPUT_SOURCE_ID uSECONDS` will select to `SOME_INPUT_SOURCE_ID` 
-  will sleep of `uSECONDS` micro seconds. If command pattern #2 does not work in
+  with sleep of `uSECONDS` micro seconds. If command pattern #2 does not work in
   your case, try this with `uSECONDS` to be 20000 first, if still does not work,
   increase it. 
 4. Add an extra option `--noKeyboardOnly` to command pattern *#2* and *#3* will 
