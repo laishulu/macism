@@ -16,16 +16,6 @@ class InputSource: Equatable {
         return tisInputSource.id
     }
 
-    var isCJKV: Bool {
-        if let lang = tisInputSource.sourceLanguages.first {
-            return lang == "ko" ||
-                   lang == "ja" ||
-                   lang == "vi" ||
-                   lang.hasPrefix("zh")
-        }
-        return false
-    }
-
     init(tisInputSource: TISInputSource) {
         self.tisInputSource = tisInputSource
     }
@@ -33,11 +23,6 @@ class InputSource: Equatable {
     func select() {
         let currentSource = InputSourceManager.getCurrentSource()
         if currentSource.id == self.id {
-            return
-        }
-        // fcitx and non-CJKV don't need special treat
-        if !self.isCJKV {
-            TISSelectInputSource(tisInputSource)
             return
         }
 
