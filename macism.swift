@@ -6,7 +6,7 @@ struct MacISM {
         if CommandLine.arguments.contains(where: { arg in
             arg.caseInsensitiveCompare("--version") == .orderedSame
         }) {
-            print("v3.0.10")
+            print("v3.1.0")
             return
         }
 
@@ -37,12 +37,13 @@ struct MacISM {
                 return
             }
 
-            // Set wait time if provided
+            // Set wait time if provided (any integer accepted).
+            // 0  = skip the TemporaryWindow workaround entirely.
+            // <0 = use built-in default (1ms).
+            // >0 = wait that many milliseconds. Higher values (e.g. 100ms) are
+            //      recommended on macOS 26 (Tahoe) to avoid the CJK race.
             if filteredArgs.count == 3, let waitTime = Int(filteredArgs[2]) {
-                // ignore waitTime of none-zero
-                if waitTime == 0 {
-                    InputSourceManager.waitTimeMs = waitTime
-                }
+                InputSourceManager.waitTimeMs = waitTime
             }
 
             dstSource.select()
