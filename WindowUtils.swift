@@ -30,8 +30,13 @@ func showTemporaryInputWindow(waitTimeMs: Int) {
     if waitTimeMs == 0 {
         return
     }
-    // Handle wait time and app termination
-    let waitTime = waitTimeMs < 0 ? 1 : waitTimeMs
+    // Handle wait time and app termination.
+    // Default (when no explicit value is passed) is 150ms: empirically the
+    // smallest fully-stable value for the CJK race on macOS 26 (Tahoe). Older
+    // macOS only needed ~1ms, but defaulting high means existing users don't
+    // silently break after an OS upgrade. Pass an explicit smaller value to
+    // trade reliability for latency.
+    let waitTime = waitTimeMs < 0 ? 150 : waitTimeMs
 
     let app = NSApplication.shared
     app.setActivationPolicy(.accessory)

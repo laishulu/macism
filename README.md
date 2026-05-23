@@ -56,19 +56,23 @@ macism SOME_INPUT_SOURCE_ID 0
 ```
 #### Switch with a custom wait time (advanced)
 The third argument is the wait time in milliseconds for the workaround
-(`TemporaryWindow`). The built-in default is `1`ms, which works on most older
-macOS versions. On **macOS 26 (Tahoe)** the 1ms default can be too short —
-Squirrel and other CJK IMEs may not fully take over before you start typing,
-causing the first 1–2 characters to leak as the previous IME. Pass a higher
-wait time to make the switch reliable:
+(`TemporaryWindow`). The built-in default is `150`ms — empirically the smallest
+fully-stable value for the CJK race on **macOS 26 (Tahoe)**. With a shorter
+wait, Squirrel and other CJK IMEs may not fully take over before you start
+typing, causing the first 1–2 characters to leak as the previous IME.
+
+Older macOS versions only needed ~1ms; the conservative default means existing
+users don't silently break after an OS upgrade, at the cost of a slightly
+higher (usually imperceptible) switch latency. If you are on an older macOS and
+want it snappier, pass a smaller value:
 ```
-macism SOME_INPUT_SOURCE_ID 100
+macism SOME_INPUT_SOURCE_ID 50
 ```
 Empirical numbers on macOS 26.4.1 (continuous switching with immediate typing):
-- `1` (default): ~30–50% race rate
+- `1`: ~30–50% race rate
 - `50`: ~5% race rate
 - `100`: stable in dozens of attempts
-- `150`: fully stable
+- `150` (default): fully stable
 
 The total switch latency is roughly `cold-start + wait`, so pick the smallest
 value that is reliable for you.

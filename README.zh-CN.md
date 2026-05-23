@@ -54,17 +54,19 @@ macism SOME_INPUT_SOURCE_ID 0
 ```
 #### 自定义 wait 时间（进阶）
 第三个参数是 workaround（`TemporaryWindow`）的等待时间（毫秒）。内置默认值是
-`1`ms，在大多数旧版 macOS 上够用。在 **macOS 26 (Tahoe)** 上，1ms 太短——
-鼠须管等 CJK 输入法还没完整接管事件流，开始打字时前 1–2 个字符会按上一个
-输入法漏出。传入更大的 wait 值可以稳定切换：
+`150`ms——在 **macOS 26 (Tahoe)** 上实测能完全稳定的最小值。wait 太短时鼠须管
+等 CJK 输入法还没完整接管事件流，开始打字时前 1–2 个字符会按上一个输入法漏出。
+
+旧版 macOS 只需要 ~1ms；保守的默认值是为了让老用户在 OS 升级后不会无声 break，
+代价是切换延迟略高（通常感知不到）。如果你在旧版 macOS 上想更快，可以传更小的值：
 ```
-macism SOME_INPUT_SOURCE_ID 100
+macism SOME_INPUT_SOURCE_ID 50
 ```
 在 macOS 26.4.1 实测（连续切换并立即打字）：
-- `1`（默认）：~30–50% race
+- `1`：~30–50% race
 - `50`：~5% race
 - `100`：几十次测试均稳定
-- `150`：完全稳定
+- `150`（默认）：完全稳定
 
 总切换延迟约为 `cold-start + wait`，建议取在你的环境下能稳定工作的最小值。
 
