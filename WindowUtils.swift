@@ -3,30 +3,28 @@ import Foundation
 
 func createWindow(x: CGFloat, y: CGFloat, width: CGFloat,
                   height: CGFloat) -> NSWindow {
-    // Create the window with titled style
+    // Create the window with borderless style to avoid taking focus
     let window = NSWindow(
         contentRect: NSRect(x: x, y: y, width: width, height: height),
-        styleMask: [.titled], // or isKeyWindow can't be true
+        styleMask: [.borderless], 
         backing: .buffered,
         defer: false
     )
 
-    // Set window properties for visibility and focus
+    // Set window properties for visibility
     window.isOpaque = true
     window.backgroundColor = NSColor.purple // Set background to purple
-    window.titlebarAppearsTransparent = true // Transparent title
     window.level = .screenSaver // High window level for visibility
     window.collectionBehavior = [.canJoinAllSpaces, .stationary]
 
-    // Make window visible, bring it to front, and make it key
-    window.makeKeyAndOrderFront(nil)
+    // Make window visible and bring it to front without taking focus
+    window.orderFront(nil)
 
     return window
 }
 
-// Function to show a temporary window with text input focus
+// Function to show a temporary window
 func showTemporaryInputWindow(waitTimeMs: Int) {
-    // skip
     if waitTimeMs == 0 {
         return
     }
@@ -44,20 +42,18 @@ func showTemporaryInputWindow(waitTimeMs: Int) {
     guard let screen = NSScreen.main else { return }
     let screenRect = screen.visibleFrame
 
-    // Calculate bottom-right position with larger window size
-    let windowWidth: CGFloat = 3 // Increased width for visibility
-    let windowHeight: CGFloat = 3 // Increased height for visibility
-    let xPos = screenRect.maxX - windowWidth - 8 // Margin from right
-    let yPos = screenRect.minY + 8 // Margin from bottom
+    // Calculate bottom-right position
+    let windowWidth: CGFloat = 3
+    let windowHeight: CGFloat = 3
+    let xPos = screenRect.maxX - windowWidth - 8
+    let yPos = screenRect.minY + 8
 
     let _ = createWindow(x: xPos, y: yPos, width: windowWidth,
                          height: windowHeight)
 
-    // Force app to activate and take focus, ignoring other apps
-    app.activate(ignoringOtherApps: true)
+    // Do NOT call app.activate to avoid losing focus from current app
     let waitTimeSeconds = TimeInterval(waitTime) / 1000.0
     DispatchQueue.main.asyncAfter(deadline: .now() + waitTimeSeconds) {
-        // Terminate the application
         app.terminate(nil)
     }
     app.run()
