@@ -42,13 +42,14 @@ class InputSource: Equatable {
         if currentSource.id == self.id {
             return
         }
+
+        TISSelectInputSource(tisInputSource)
+
         // fcitx and non-CJKV don't need special treat
         if !self.isCJKV {
-            TISSelectInputSource(tisInputSource)
             return
         }
 
-        TISSelectInputSource(tisInputSource)
         showTemporaryInputWindow(
           waitTimeMs: InputSourceManager.waitTimeMs
         )
