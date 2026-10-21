@@ -4,7 +4,7 @@
 SWIFTC = swiftc
 
 # Targets for CLI (macism)
-CLI_SOURCES = KeyUtils.swift WindowUtils.swift TSMUtils.swift InputSourceManager.swift macism.swift
+CLI_SOURCES = KeyUtils.swift WindowUtils.swift TSMUtils.swift Server.swift InputSourceManager.swift macism.swift
 CLI_TARGET = macism
 CLI_FRAMEWORKS = -framework Carbon
 

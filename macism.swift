@@ -10,6 +10,14 @@ struct MacISM {
             return
         }
 
+        if CommandLine.arguments.contains("--serve") {
+            serve()
+        }
+        // A running server saves this process its startup time.
+        if forwardToServer(CommandLine.arguments) {
+            return
+        }
+
         // Initialize input sources
         InputSourceManager.initialize()
 
