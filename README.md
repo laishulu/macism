@@ -56,7 +56,9 @@ macism SOME_INPUT_SOURCE_ID 0
 ```
 #### Switch with a custom wait time (advanced)
 The third argument is the wait time in milliseconds for the workaround
-(`TemporaryWindow`). The built-in default is `150`ms — empirically the smallest
+(`TemporaryWindow`), which only runs when macism can't have the focused app
+switch directly (or with `--no-tsm`).
+The built-in default is `150`ms — empirically the smallest
 fully-stable value for the CJK race on **macOS 26 (Tahoe)**. With a shorter
 wait, Squirrel and other CJK IMEs may not fully take over before you start
 typing, causing the first 1–2 characters to leak as the previous IME.
