@@ -53,7 +53,8 @@ macism SOME_INPUT_SOURCE_ID
 macism SOME_INPUT_SOURCE_ID 0
 ```
 #### 自定义 wait 时间（进阶）
-第三个参数是 workaround（`TemporaryWindow`）的等待时间（毫秒）。内置默认值是
+第三个参数是 workaround（`TemporaryWindow`）的等待时间（毫秒），只在 macism 没法让焦点
+应用直接切换时（或加了 `--no-tsm`）才用到。内置默认值是
 `150`ms——在 **macOS 26 (Tahoe)** 上实测能完全稳定的最小值。wait 太短时鼠须管
 等 CJK 输入法还没完整接管事件流，开始打字时前 1–2 个字符会按上一个输入法漏出。
 

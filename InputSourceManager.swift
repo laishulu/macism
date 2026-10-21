@@ -31,6 +31,13 @@ class InputSource: Equatable {
     }
 
     func select() {
+        // Before the already-selected check: after a broken switch the menu
+        // bar shows this source while the focused app still types latin.
+        if self.isCJKV && InputSourceManager.useTSM &&
+            selectInFocusedApp(tisInputSource) {
+            return
+        }
+
         let currentSource = InputSourceManager.getCurrentSource()
         if currentSource.id == self.id {
             return
@@ -51,6 +58,7 @@ class InputSource: Equatable {
 class InputSourceManager {
     static var inputSources: [InputSource] = []
     static var waitTimeMs: Int = -1  // less than 0 means using default
+    static var useTSM = true
     static var level: Int = 1
 
     static func initialize() {

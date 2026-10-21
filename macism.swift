@@ -47,6 +47,11 @@ struct MacISM {
                 InputSourceManager.waitTimeMs = waitTime
             }
 
+            // --no-tsm: always TISSelectInputSource with TemporaryWindow.
+            if arguments.contains("--no-tsm") {
+                InputSourceManager.useTSM = false
+            }
+
             dstSource.select()
         }
     }
