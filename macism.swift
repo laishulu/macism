@@ -6,7 +6,7 @@ struct MacISM {
         if CommandLine.arguments.contains(where: { arg in
             arg.caseInsensitiveCompare("--version") == .orderedSame
         }) {
-            print("v3.1.1")
+            print("v4.0.0")
             return
         }
 
